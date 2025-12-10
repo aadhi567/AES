@@ -41,10 +41,12 @@ int main() {
     char plaintext[100], key[100], ciphertext[100], decryptedText[100];
 
     printf("Enter the plaintext: ");
-    scanf("%s", plaintext); // Note: scanf stops reading at the first space
+    fgets(plaintext, sizeof(plaintext), stdin);
+    plaintext[strcspn(plaintext, "\n")] = 0;
 
     printf("Enter the key: ");
-    scanf("%s", key);
+    fgets(key, sizeof(key), stdin);
+    key[strcspn(key, "\n")] = 0;
 
     simpleAESEncrypt(plaintext, key, ciphertext);
     printASCII(ciphertext);
